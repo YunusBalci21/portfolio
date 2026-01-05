@@ -498,11 +498,3 @@ body.loaded .intro {
   .intro__wipe { animation: none; transform: none; }
   body::before { animation: none; }
 }
-
-
-/* If JS never runs, don't hide content */
-html:not([data-js]) .reveal {
-  opacity: 1;
-  transform: none;
-  filter: none;
-}

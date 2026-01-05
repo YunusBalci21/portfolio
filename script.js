@@ -7,6 +7,7 @@ const CONTENT = {
   links: {
     github: "https://github.com/YunusBalci21/",
     linkedin: "https://www.linkedin.com/in/yunus-emre-balci/",
+    motionRepo: "https://github.com/YunusBalci21/",
     email: "mailto:yunus27@live.dk",
     emailRaw: "yunus27@live.dk",
 
@@ -93,6 +94,22 @@ const CONTENT = {
 
   research: [
     {
+      title: "CV",
+      meta: "Page + PDF",
+      description: "Full CV page with embedded PDF and a readable snapshot.",
+      href: "cv.html",
+      secondaryHref: "assets/Yunus_Emre_Balci_CV.pdf",
+      tags: ["CV", "Experience", "Skills"]
+    },
+    {
+      title: "Motion-language model",
+      meta: "Page + PDF",
+      description: "Motion-language alignment + hierarchical RL (PDF + overview page).",
+      href: "motion.html",
+      secondaryHref: "assets/motion-language-model.pdf",
+      tags: ["ML", "RL", "MuJoCo"]
+    },
+    {
       title: "Motion-Language Model",
       meta: "PDF + GitHub",
       description: "Open-vocabulary instruction following without vision using motion-language alignment and hierarchical RL.",
@@ -139,6 +156,7 @@ function bindContent() {
 
   $all('[data-bind-href="github"]').forEach((a) => (a.href = CONTENT.links.github));
   $all('[data-bind-href="linkedin"]').forEach((a) => (a.href = CONTENT.links.linkedin));
+  $all('[data-bind-href="motionRepo"]').forEach((a) => (a.href = CONTENT.links.motionRepo));
   $all('[data-bind-href="email"]').forEach((a) => (a.href = CONTENT.links.email));
 
   const emailLink = $("#emailLink");
@@ -185,27 +203,21 @@ function makeCard(item) {
     tags.appendChild(tag);
   });
 
-  const href = typeof item.href === "string" ? item.href.trim() : "";
-  const hasLink = href.length > 0;
-  const isExternal = /^https?:\/\//i.test(href);
-
   const hint = document.createElement("div");
   hint.className = "card__hint mono";
-  hint.textContent = item.secondaryHref ? "open / page + pdf" : (hasLink ? "open" : "no link yet");
+  hint.textContent = item.secondaryHref ? "open / page + pdf" : "open";
+
+  const link = document.createElement("a");
+  link.className = "card__link";
+  link.href = (typeof item.href === "string" && item.href.length) ? item.href : "#";
+  link.target = (/^https?:\/\//i.test(link.href)) ? "_blank" : "_self";
+  link.rel = (/^https?:\/\//i.test(link.href)) ? "noopener noreferrer" : "";
 
   card.appendChild(top);
   card.appendChild(desc);
   card.appendChild(tags);
   card.appendChild(hint);
-
-  if (hasLink) {
-    const link = document.createElement("a");
-    link.className = "card__link";
-    link.href = href;
-    link.target = isExternal ? "_blank" : "_self";
-    link.rel = isExternal ? "noopener noreferrer" : "";
-    card.appendChild(link);
-  }
+  card.appendChild(link);
 
   if (item.secondaryHref) {
     card.addEventListener("click", (e) => {
