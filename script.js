@@ -42,21 +42,20 @@ const CONTENT = {
       title: "MyDrive (MVP)",
       meta: "Mobile app (2025)",
       description: "End-to-end MVP vehicle management app built as sole technical founder (React Native, Firebase).",
-      href: "https://www.linkedin.com/in/yunus-emre-balci/",
       tags: ["React Native", "Firebase", "MVP"]
     },
     {
       title: "CTF bachelor project",
       meta: "Academic (Grade: 10)",
       description: "Created Capture the Flag challenges involving machine learning and SQL injection.",
-      href: "cv.html",
+      href: "https://github.com/YunusBalci21/ctf_final",
       tags: ["Security", "CTF", "ML"]
     },
     {
       title: "Language-guided RL agents",
       meta: "Academic",
       description: "Agents trained to follow language instructions using reinforcement learning.",
-      href: "cv.html",
+      href: "https://github.com/YunusBalci21/motion-language-control",
       tags: ["RL", "Agents", "Research"]
     },
     {
@@ -84,7 +83,7 @@ const CONTENT = {
       title: "ANIMA (simulation)",
       meta: "Experiment",
       description: "Agent-based simulation experiments and RL-driven behaviors.",
-      href: "cv.html",
+      href: "https://github.com/YunusBalci21/anima",
       tags: ["Simulation", "AI", "Agents"]
     }
   ],
