@@ -1,4 +1,5 @@
 document.documentElement.setAttribute("data-js", "on");
+
 const CONTENT = {
   name: "Yunus Emre Balci",
   headline: "Clean work. Sharp motion. Real builds.",
@@ -7,12 +8,10 @@ const CONTENT = {
   links: {
     github: "https://github.com/YunusBalci21/",
     linkedin: "https://www.linkedin.com/in/yunus-emre-balci/",
-    motionRepo: "https://github.com/YunusBalci21/",
     email: "mailto:yunus27@live.dk",
     emailRaw: "yunus27@live.dk",
 
-    // Optional: drop your motion-language PDF into /assets and point to it here.
-    motionPdf: "assets/motion-language-model.pdf"
+    motionRepo: "https://github.com/YunusBalci21/"
   },
 
   websites: [
@@ -34,33 +33,12 @@ const CONTENT = {
       title: "pilea.dk (demo)",
       meta: "Demo",
       description: "Experimental demo build for Pilea. Built to iterate quickly and test direction.",
-      href: "https://pilea-dk.vercel.app/",
+      href: "https://pilea.dk",
       tags: ["Demo", "UI", "Iteration"]
     }
   ],
 
-
   projects: [
-    {
-      title: "MyDrive (MVP)",
-      meta: "Mobile app (2025)",
-      description: "End-to-end MVP vehicle management app built as sole technical founder (React Native, Firebase).",
-      tags: ["React Native", "Firebase", "MVP"]
-    },
-    {
-      title: "CTF Bachelor Project",
-      meta: "Academic (Grade: 10)",
-      description: "Capture the Flag challenges involving machine learning and SQL injection — part of my bachelor's project.",
-      href: "https://github.com/YunusBalci21/ctf-bachelor-project", // <-- Actual repo name if different
-      tags: ["Security", "CTF", "ML"]
-    },
-    {
-      title: "Language-guided RL Agents",
-      meta: "Research",
-      description: "Agents trained to follow natural language instructions using reinforcement learning.",
-      href: "https://github.com/YunusBalci21/motion-language-model", // <-- your motion-language-model repo
-      tags: ["RL", "Agents", "Research"]
-    },
     {
       title: "fidelio-music-bot",
       meta: "GitHub",
@@ -81,16 +59,8 @@ const CONTENT = {
       description: "Reinforcement learning experiments and training pipelines.",
       href: "https://github.com/YunusBalci21/rl-project",
       tags: ["RL", "Python", "Research"]
-    },
-    {
-      title: "ANIMA (Simulation)",
-      meta: "In progress",
-      description: "Agent-based simulation with emergent behavior and LLM-powered cognition.",
-      href: "https://github.com/YunusBalci21/anima", // <-- your actual ANIMA repo link
-      tags: ["Simulation", "AI", "Agents"]
     }
   ],
-
 
   research: [
     {
@@ -104,33 +74,17 @@ const CONTENT = {
     {
       title: "Motion-language model",
       meta: "Page + PDF",
-      description: "Motion-language alignment + hierarchical RL (PDF + overview page).",
+      description: "Motion-language alignment + hierarchical RL (overview page + PDF).",
       href: "motion.html",
       secondaryHref: "assets/motion-language-model.pdf",
       tags: ["ML", "RL", "MuJoCo"]
-    },
-    {
-      title: "Motion-Language Model",
-      meta: "PDF + GitHub",
-      description: "Open-vocabulary instruction following without vision using motion-language alignment and hierarchical RL.",
-      href: "assets/motion-language-model.pdf",
-      secondaryHref: "https://github.com/YunusBalci21/motion-language-model",
-      tags: ["ML", "RL", "MuJoCo"]
-    },
-    {
-      title: "Curriculum Vitae",
-      meta: "CV page + PDF",
-      description: "Full CV page with embedded PDF and a readable version.",
-      href: "cv.html",
-      secondaryHref: "assets/Yunus_Emre_Balci_CV.pdf",
-      tags: ["CV", "Experience"]
     }
   ],
 
   now: [
     { label: "Open to work", value: "Websites + engineering" },
-    { label: "Building", value: "Clean web + prototypes" },
-    { label: "Research", value: "RL + language-guided agents" }
+    { label: "Motion-language model", value: "Alignment + hierarchical RL" },
+    { label: "Building", value: "Clean web + prototypes" }
   ],
 
   footerNote: "Available for freelance and full-time work — websites, tooling, and prototypes.",
@@ -156,8 +110,8 @@ function bindContent() {
 
   $all('[data-bind-href="github"]').forEach((a) => (a.href = CONTENT.links.github));
   $all('[data-bind-href="linkedin"]').forEach((a) => (a.href = CONTENT.links.linkedin));
-  $all('[data-bind-href="motionRepo"]').forEach((a) => (a.href = CONTENT.links.motionRepo));
   $all('[data-bind-href="email"]').forEach((a) => (a.href = CONTENT.links.email));
+  $all('[data-bind-href="motionRepo"]').forEach((a) => (a.href = CONTENT.links.motionRepo));
 
   const emailLink = $("#emailLink");
   if (emailLink) emailLink.textContent = CONTENT.links.emailRaw;
@@ -203,21 +157,27 @@ function makeCard(item) {
     tags.appendChild(tag);
   });
 
+  const href = typeof item.href === "string" ? item.href.trim() : "";
+  const hasLink = href.length > 0;
+  const isExternal = /^https?:\/\//i.test(href);
+
   const hint = document.createElement("div");
   hint.className = "card__hint mono";
-  hint.textContent = item.secondaryHref ? "open / page + pdf" : "open";
-
-  const link = document.createElement("a");
-  link.className = "card__link";
-  link.href = (typeof item.href === "string" && item.href.length) ? item.href : "#";
-  link.target = (/^https?:\/\//i.test(link.href)) ? "_blank" : "_self";
-  link.rel = (/^https?:\/\//i.test(link.href)) ? "noopener noreferrer" : "";
+  hint.textContent = item.secondaryHref ? "open / page + pdf" : (hasLink ? "open" : "no link yet");
 
   card.appendChild(top);
   card.appendChild(desc);
   card.appendChild(tags);
   card.appendChild(hint);
-  card.appendChild(link);
+
+  if (hasLink) {
+    const link = document.createElement("a");
+    link.className = "card__link";
+    link.href = href;
+    link.target = isExternal ? "_blank" : "_self";
+    link.rel = isExternal ? "noopener noreferrer" : "";
+    card.appendChild(link);
+  }
 
   if (item.secondaryHref) {
     card.addEventListener("click", (e) => {
@@ -262,15 +222,15 @@ function renderNow(items) {
 function setupReveals() {
   const els = $all(".reveal");
   const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("in-view");
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.18 }
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
   );
 
   els.forEach((el) => io.observe(el));

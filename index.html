@@ -1,144 +1,150 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio: websites, experiments, and ongoing work." />
-    <title>Yunus Emre Balci</title>    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="alternate icon" href="favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio: websites, experiments, and ongoing work." />
+  <title>Yunus Emre Balci</title>
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <body>
-    <div class="intro" aria-hidden="true">
-      <div class="intro__wipe"></div>
-      <div class="intro__wipe intro__wipe--2"></div>
-      <div class="intro__label">
-        <span class="mono">loading</span>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<div class="intro" aria-hidden="true">
+  <div class="intro__wipe"></div>
+  <div class="intro__wipe intro__wipe--2"></div>
+  <div class="intro__label">
+    <span class="mono">loading</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <a class="brand" href="#top">
+    <span class="brand__dot" aria-hidden="true"></span>
+    <span class="brand__name mono" data-bind="name">Yunus Emre Balci</span>
+  </a>
+
+  <nav class="nav" aria-label="Primary">
+    <a href="#work">Websites</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#now">Now</a>
+    <a href="motion.html">Motion</a>
+    <a href="cv.html">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button class="theme" type="button" id="themeBtn" aria-label="Toggle theme">
+    <span class="mono">theme</span>
+  </button>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="kicker mono reveal">Selected work and ongoing builds</p>
+
+      <h1 class="hero__title reveal">
+        <span data-bind="headline">Clean work. Sharp motion. Real builds.</span>
+      </h1>
+
+      <p class="hero__sub reveal" data-bind="tagline">
+        Open to work — I build websites, experiments, and systems.
+      </p>
+
+      <div class="hero__actions reveal">
+        <a class="btn" href="#work">Explore work</a>
+        <a class="btn btn--ghost" data-bind-href="github" href="#">GitHub</a>
+        <a class="btn btn--ghost" data-bind-href="linkedin" href="#">LinkedIn</a>
+        <a class="btn btn--ghost" href="cv.html">Open CV</a>
+        <a class="btn btn--ghost" href="motion.html">Motion notes</a>
       </div>
     </div>
 
-    <header class="site-header">
-      <a class="brand" href="#top">
-        <span class="brand__dot" aria-hidden="true"></span>
-        <span class="brand__name mono" data-bind="name">Yunus Emre Balci</span>
-      </a>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>websites</span><span class="sep">/</span>
+        <span>systems</span><span class="sep">/</span>
+        <span>research</span><span class="sep">/</span>
+        <span>experiments</span><span class="sep">/</span>
+        <span>websites</span><span class="sep">/</span>
+        <span>systems</span><span class="sep">/</span>
+        <span>research</span><span class="sep">/</span>
+        <span>experiments</span>
+      </div>
+    </div>
+  </section>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#work">Websites</a>
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#now">Now</a>
-        <a href="motion.html">Motion</a>
-        <a href="cv.html">CV</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <section class="section" id="work">
+    <div class="section__head">
+      <h2 class="reveal">Websites</h2>
+      <p class="muted reveal">Live sites and demos.</p>
+    </div>
+    <div class="grid" data-render="websites"></div>
+  </section>
 
-      <button class="theme" type="button" id="themeBtn" aria-label="Toggle theme">
-        <span class="mono">theme</span>
-      </button>
-    </header>
+  <section class="section" id="projects">
+    <div class="section__head">
+      <h2 class="reveal">Projects</h2>
+      <p class="muted reveal">Repos, tools, and systems.</p>
+    </div>
+    <div class="grid" data-render="projects"></div>
+  </section>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero__inner">
-          <p class="kicker mono reveal">Selected work and ongoing builds</p>
+  <section class="section" id="research">
+    <div class="section__head">
+      <h2 class="reveal">Research and notes</h2>
+      <p class="muted reveal">PDFs, writeups, and work-in-progress.</p>
+    </div>
+    <div class="grid" data-render="research"></div>
+    <p class="muted small reveal" style="margin-top: 10px;">
+      Tip: Shift+click a research card to open its PDF directly.
+    </p>
+  </section>
 
-          <h1 class="hero__title reveal">
-            <span data-bind="headline">Clean work. Sharp motion. Real builds.</span>
-          </h1>
+  <section class="section" id="now">
+    <div class="section__head">
+      <h2 class="reveal">Now</h2>
+      <p class="muted reveal">What I’m actively building.</p>
+    </div>
 
-          <p class="hero__sub reveal" data-bind="tagline">
-            Open to work — I build websites, experiments, and systems.
-          </p>
+    <div class="now reveal">
+      <div class="now__list" data-render="now"></div>
+    </div>
+  </section>
 
-          <div class="hero__actions reveal">
-            <a class="btn" href="#work">Explore work</a>
-            <a class="btn btn--ghost" data-bind-href="github" href="#">GitHub</a>
-            <a class="btn btn--ghost" data-bind-href="linkedin" href="#">LinkedIn</a>
-            <a class="btn btn--ghost" href="cv.html">Open CV</a>
-            <a class="btn btn--ghost" href="motion.html">Motion notes</a>
-          </div>
-        </div>
+  <section class="section" id="contact">
+    <div class="section__head">
+      <h2 class="reveal">Contact</h2>
+      <p class="muted reveal">Open to work — websites, tooling, prototypes.</p>
+    </div>
 
-        <div class="marquee" aria-hidden="true">
-          <div class="marquee__track">
-            <span>websites</span><span class="sep">/</span>
-            <span>systems</span><span class="sep">/</span>
-            <span>research</span><span class="sep">/</span>
-            <span>experiments</span><span class="sep">/</span>
-            <span>websites</span><span class="sep">/</span>
-            <span>systems</span><span class="sep">/</span>
-            <span>research</span><span class="sep">/</span>
-            <span>experiments</span>
-          </div>
-        </div>
-      </section>
+    <div class="contact reveal">
+      <div class="contact__row">
+        <a class="link" data-bind-href="github" href="#">GitHub</a>
+        <a class="link" data-bind-href="linkedin" href="#">LinkedIn</a>
+        <a class="link" data-bind-href="email" href="#" id="emailLink">yunus27@live.dk</a>
+        <a class="link" href="cv.html">CV</a>
+        <a class="link" href="motion.html">Motion</a>
+        <button class="btn btn--ghost" id="copyEmailBtn" type="button">Copy email</button>
+      </div>
 
-      <section class="section" id="work">
-        <div class="section__head">
-          <h2 class="reveal">Websites</h2>
-          <p class="muted reveal">Live sites and demos.</p>
-        </div>
-        <div class="grid" data-render="websites"></div>
-      </section>
+      <p class="muted small" data-bind="footerNote">
+        Available for freelance and full-time work — websites, tooling, and prototypes.
+      </p>
+    </div>
+  </section>
+</main>
 
-      <section class="section" id="projects">
-        <div class="section__head">
-          <h2 class="reveal">Projects</h2>
-          <p class="muted reveal">Repos, tools, and systems.</p>
-        </div>
-        <div class="grid" data-render="projects"></div>
-      </section>
+<footer class="footer">
+  <span class="mono" data-bind="footerLeft">©</span>
+  <span class="mono" data-bind="footerRight">Made by Yunus Emre Balci</span>
+</footer>
 
-      <section class="section" id="research">
-        <div class="section__head">
-          <h2 class="reveal">Research and notes</h2>
-          <p class="muted reveal">PDFs, writeups, and work-in-progress.</p>
-        </div>
-        <div class="grid" data-render="research"></div>
-      </section>
-
-      <section class="section" id="now">
-        <div class="section__head">
-          <h2 class="reveal">Now</h2>
-          <p class="muted reveal">What I’m actively building.</p>
-        </div>
-
-        <div class="now reveal">
-          <div class="now__list" data-render="now"></div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="section__head">
-          <h2 class="reveal">Contact</h2>
-          <p class="muted reveal">Open to work — websites, tooling, prototypes.</p>
-        </div>
-
-        <div class="contact reveal">
-          <div class="contact__row">
-            <a class="link" data-bind-href="github" href="#">GitHub</a>
-            <a class="link" data-bind-href="linkedin" href="#">LinkedIn</a>
-            <a class="link" data-bind-href="email" href="#" id="emailLink">yunus27@live.dk</a>
-            <a class="link" href="cv.html">CV</a>
-            <button class="btn btn--ghost" id="copyEmailBtn" type="button">Copy email</button>
-          </div>
-
-          <p class="muted small" data-bind="footerNote">
-            Available for freelance and full-time work — web, tooling, and prototypes.
-          </p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <span class="mono" data-bind="footerLeft">©</span>
-      <span class="mono" data-bind="footerRight">Made by Yunus Emre Balci</span>
-    </footer>
-
-    <script type="module" src="script.js"></script>
-  </body>
+<script type="module" src="script.js"></script>
+</body>
 </html>
