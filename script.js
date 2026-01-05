@@ -33,7 +33,7 @@ const CONTENT = {
       title: "pilea.dk (demo)",
       meta: "Demo",
       description: "Experimental demo build for Pilea. Built to iterate quickly and test direction.",
-      href: "https://pilea.dk",
+      href: "https://pilea-dk.vercel.app/",
       tags: ["Demo", "UI", "Iteration"]
     }
   ],
